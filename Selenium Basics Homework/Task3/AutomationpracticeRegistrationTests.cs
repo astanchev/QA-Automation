@@ -51,6 +51,9 @@
 
             var expectedValueString = "aaaaaa@aaa.aaa";
             var actualValueString = wait.Until(w => w.FindElement(By.Id("email")).GetAttribute("value"));
+
+            //var emailText = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//form[@id='account-creation_form']//input[@id='email']")));
+            //var actualValueString = emailText.GetAttribute("value");
             
             Assert.AreEqual(expectedValueString, actualValueString);
         }
