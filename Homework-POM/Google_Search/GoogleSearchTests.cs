@@ -29,7 +29,6 @@
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
 
             searchPage = new GoogleSearchPage(driver);
-
         }
 
         [TearDown]
