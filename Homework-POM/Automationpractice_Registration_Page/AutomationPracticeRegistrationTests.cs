@@ -1,10 +1,13 @@
 ﻿namespace AutomationPractice_Registration_Page
 {
-    using System.IO;
-    using System.Reflection;
     using NUnit.Framework;
+
     using OpenQA.Selenium.Chrome;
+    using OpenQA.Selenium.Remote;
+
     using Pages.HomePage;
+
+    using System;
 
     [TestFixture]
     public class AutomationPracticeRegistrationTests
@@ -14,7 +17,14 @@
         [SetUp]
         public void SetUp()
         {
-            var driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            ChromeOptions options = new ChromeOptions();
+
+            options.PlatformName = "windows";
+            options.BrowserVersion = "77.0";
+
+
+            var driver = new RemoteWebDriver(new Uri("http://192.168.100.5:21928/wd/hub"), options.ToCapabilities(), TimeSpan.FromSeconds(10));
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
             driver.Manage().Window.Maximize();
 
             homePage = new HomePage(driver);
