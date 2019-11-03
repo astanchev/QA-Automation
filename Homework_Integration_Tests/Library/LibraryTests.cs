@@ -95,6 +95,8 @@ namespace Library
 
             //Check if book collection is not empty
             Assert.True(books.Count > 0);
+            //Make sure that we will have at least 2 books for next test
+            Assert.True(books.Count > 1);
         }
 
         [Test]
